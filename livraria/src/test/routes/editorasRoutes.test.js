@@ -57,6 +57,19 @@ describe('GET em /editoras/id', () => {
   });
 });
 
+describe('PUT em /editoras/id', () => {
+  test.each([
+    ['nome', { nome: 'Casa do Codigo' }],
+    ['cidade', { cidade: 'SP' }],
+    ['email', { email: 'cdc@cdc.com' }],
+  ])('Deve alterar o campo %s', async (key, param) => {
+    await request(app)
+      .put(`/editoras/${idResposta}`)
+      .send(param)
+      .expect(204);
+  });
+});
+
 describe('DELETE em /editoras/id', () => {
   it('Deletar o recurso adcionado', async () => {
     await request(app)
