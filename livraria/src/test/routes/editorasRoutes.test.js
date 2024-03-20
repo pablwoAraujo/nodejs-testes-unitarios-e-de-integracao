@@ -81,3 +81,13 @@ describe('DELETE em /editoras/id', () => {
       .expect(200);
   });
 });
+
+describe('Get em /editoras/:id/livros', () => {
+  it('Buscar os livros de uma editora', async () => {
+    const id = 1;
+    await request(app)
+      .get(`/editoras/${id}/livros`)
+      .expect('content-type', /json/)
+      .expect(200);
+  });
+});
